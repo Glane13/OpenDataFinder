@@ -1,0 +1,92 @@
+intents:
+  - request_housing:
+      use_entities: []
+  - request_population:
+      use_entities: []
+  - chitchat:
+      use_entities: []
+  - inform
+  - affirm
+  - deny
+  - stop
+  - thankyou
+  - greet
+  - bot_challenge
+
+entities:
+  - area
+  - start_year
+  - end_year
+  - number
+  - start_age
+  - end_age
+
+slots:
+  area:
+    type: unfeaturized
+    auto_fill: false
+  start_year:
+    type: unfeaturized
+    auto_fill: false
+  end_year:
+    type: unfeaturized
+    auto_fill: true
+  start_age:
+    type: unfeaturized
+    auto_fill: false
+  end_age:
+    type: unfeaturized
+    auto_fill: true
+  ans:
+    type: unfeaturized
+    auto_fill: false
+  requested_slot:
+    type: unfeaturized
+
+templates:
+  utter_request_housing:
+    - text: "This is the Request_Housing intent that will answer housing questions in a future version"
+  utter_ask_area:
+    - text: "Please specify a London borough (e.g. Lambeth) or you can also enter Greater London, Outer London or Inner London"
+  utter_ask_start_year:
+    - text: "Please enter a year (e.g. 2015) or a range of years (e.g. from 2015 to 2018). I can answer questions about the years from 2011 to 2050."
+  utter_ask_start_age:
+    - text: "Please enter an age range (e.g. people aged from 5 to 16) or a single age (e.g. people aged 63?) I can answer questions about ages from 0 to 90"
+  utter_submit:
+    - text: "All done!"
+  utter_slots_values:
+    - text: "The answer is: {ans}. (Number people in {area} in the period from {start_year} to {end_year} and aged from {start_age} to {end_age})"
+  utter_noworries:
+    - text: "you are welcome :)"
+  utter_chitchat:
+    - text: "chitchat"
+  utter_ask_continue:
+    - text: "do you want to continue?"
+  utter_wrong_area:
+    - text: "area is not in the database, please try again"
+  utter_wrong_start_year:
+    - text: "The year should be written as a number in the period between 2011 to 2050. Please try again"
+  utter_wrong_end_year:
+    - text: "The year should be written as a number in the period between 2011 to 2050. Please try again"
+  utter_wrong_start_age:
+    - text: "age should be All or written in numbers e.g. 44, please try again"
+  utter_default:
+    - text: "sorry, I didn't understand you, please try input something else"
+  utter_greet:
+    - text: "Hello! I am the open data search assistant! How can I help?"
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+actions:
+  - utter_request_housing
+  - utter_ask_area
+  - utter_ask_start_year
+  - utter_ask_start_age
+  - utter_slots_values
+  - utter_noworries
+  - utter_chitchat
+  - utter_ask_continue
+  - utter_greet
+  - utter_iamabot
+forms:
+  - population_form
